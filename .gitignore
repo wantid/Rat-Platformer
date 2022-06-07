@@ -1,0 +1,29 @@
+# media
+
+*.png
+Animations/
+Prefabs/
+Scenes/
+Sprites/
+
+# default
+
+Library/
+Logs/
+obj/
+Packages/
+ProjectSettings/
+UserSettings/
+.vs/
+
+# files
+
+*.vsconfig
+*.csproj
+*.sln
+*.meta
+*.bak
+*.sln
+*.asset
+.vsconfig
+*.csproj
