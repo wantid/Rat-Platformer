@@ -2,15 +2,13 @@ using UnityEngine;
 
 public class MiniLevelsHandler : MonoBehaviour
 {
-    public GameObject[] miniLevels;
-
     public Transform parent;
 
     [ContextMenu("New Level")]
     public void NewLevel()
     {
         if (IsReady())
-            Instantiate(miniLevels[Random.Range(0, miniLevels.Length)], parent);
+            Instantiate(LinkToObjects.instance.miniLevels[Random.Range(0, LinkToObjects.instance.miniLevels.Length)], parent);
     }
     private bool IsReady()
     {

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -18,7 +16,7 @@ public class PlayerController : MonoBehaviour
     }
     void Update()
     {
-        Jump();
+        if (Input.GetButtonDown("Vertical") || Input.GetButtonDown("Fire1")) Jump();
         animator.SetBool("isGrounded", isGrounded());
     }
     private bool isGrounded()
@@ -32,16 +30,15 @@ public class PlayerController : MonoBehaviour
                 else return false;
             }
 
-            Vector2 pos = transform.position;
-            if (hit = Physics2D.Linecast(pos, pos + Vector2.down * 20f, (1 << 0)))
+            Vector2 pos = new Vector2(transform.position.x, transform.position.y - 8f);
+            if (hit = Physics2D.Linecast(pos, pos + Vector2.down * 16f, (1 << 0)))
                 return CompareGround();
         }
         return false;
     }
     private void Jump()
     {
-        if ((Input.GetButtonDown("Vertical") || Input.GetButtonDown("Fire1")) 
-            && (isGrounded() || doubleJump))
+        if (isGrounded() || doubleJump && !isGrounded())
         {
             doubleJump = false;
             animator.SetTrigger("Jump");
@@ -50,10 +47,21 @@ public class PlayerController : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Damage"))
+        switch (collision.gameObject.tag)
         {
-            //GameOver
-            SceneManager.LoadScene(0);
+            case "Damage":
+                //GameOver
+                SceneManager.LoadScene(0);
+                break;
+            case "Hit":
+                rigidbody2D.AddForce(Vector2.up * jumpForce * 5000, ForceMode2D.Force);
+                doubleJump = true;
+                break;
+            case "Bonus":
+                Destroy(collision.gameObject);
+                Debug.Log("Picked up bonus!");
+                //Bonus points
+                break;
         }
     }
 }

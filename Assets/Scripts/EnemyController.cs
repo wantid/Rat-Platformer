@@ -22,6 +22,9 @@ public class EnemyController : MonoBehaviour
     private void Death()
     {
         if (healthPoints <= 0)
+        {
+            Instantiate(LinkToObjects.instance.Bonus, transform.position, Quaternion.identity, LinkToObjects.instance.Level);
             Destroy(gameObject);
+        }
     }
 }
