@@ -3,7 +3,7 @@
 A simple implemenation of a runner combined with platformer mechanics
 
 <p align="center">
-  <img src="/GithubMedia/banner.png" alt="Rat Platformer">
+  <img src="/GithubMedia/banner.jpeg" alt="Rat Platformer">
 </p>
 
 ## Description
