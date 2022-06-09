@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class LinkToObjects : MonoBehaviour
 {
+    public static int maxScore;
+
     public GameObject[] miniLevels;
     public GameObject Bonus;
 
