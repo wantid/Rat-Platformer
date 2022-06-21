@@ -59,7 +59,7 @@ public class PlayerController : MonoBehaviour
                 break;
             case "Bonus":
                 Destroy(collision.gameObject);
-                Scores.AddScore(50);
+                Scores.AddScore(5);
                 //Bonus points
                 break;
         }

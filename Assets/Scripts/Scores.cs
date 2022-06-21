@@ -8,9 +8,22 @@ public class Scores : MonoBehaviour
     private static int currentScore;
     private static string scoreText;
 
+    private float curTime;
+
     void Update()
     {
+        TimeScore();
+
         textContainer.text = $"SCORE: {scoreText}";
+    }
+    private void TimeScore()
+    {
+        if (curTime <= 0)
+        {
+            curTime = 5;
+            AddScore(1);
+        }
+        else curTime -= Time.deltaTime;
     }
     public static void AddScore(int change)
     {

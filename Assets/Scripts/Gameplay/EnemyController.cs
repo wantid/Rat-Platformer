@@ -6,6 +6,8 @@ public class EnemyController : MonoBehaviour
 
     public int healthPoints;
 
+    public Vector3 bonusOffset;
+
     void Update()
     {
         HealthChange();
@@ -23,7 +25,7 @@ public class EnemyController : MonoBehaviour
     {
         if (healthPoints <= 0)
         {
-            Instantiate(LinkToObjects.instance.Bonus, transform.position, Quaternion.identity, LinkToObjects.instance.Level);
+            Instantiate(LinkToObjects.instance.Bonus, transform.position + bonusOffset, Quaternion.identity, LinkToObjects.instance.Level);
             Destroy(gameObject);
         }
     }
