@@ -1,9 +1,10 @@
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class Scores : MonoBehaviour
 {
-    public Text textContainer;
+    public Text scoresTextContainer;
+    public Text coinsTextContainer;
 
     private static int currentScore;
     private static string scoreText;
@@ -14,7 +15,8 @@ public class Scores : MonoBehaviour
     {
         TimeScore();
 
-        textContainer.text = $"SCORE: {scoreText}";
+        scoresTextContainer.text = $"SCORE: {scoreText}";
+        coinsTextContainer.text = $"× {GameManager.coin}";
     }
     private void TimeScore()
     {

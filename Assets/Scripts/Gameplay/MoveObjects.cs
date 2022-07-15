@@ -31,7 +31,7 @@ public class MoveObjects : MonoBehaviour
     }
     private void MoveObject()
     {
-        if (transform.position.x < -1000)
+        if (transform.position.x < -350)
         {
             Destroy(gameObject);
         }

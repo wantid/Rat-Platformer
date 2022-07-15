@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -50,8 +49,8 @@ public class PlayerController : MonoBehaviour
         switch (collision.gameObject.tag)
         {
             case "Damage":
-                //GameOver
-                SceneManager.LoadScene(0);
+                GameManager.GameOver();
+                Destroy(gameObject);
                 break;
             case "Hit":
                 rigidbody2D.AddForce(Vector2.up * jumpForce * 5000, ForceMode2D.Force);
@@ -60,7 +59,7 @@ public class PlayerController : MonoBehaviour
             case "Bonus":
                 Destroy(collision.gameObject);
                 Scores.AddScore(5);
-                //Bonus points
+                GameManager.coin++;
                 break;
         }
     }

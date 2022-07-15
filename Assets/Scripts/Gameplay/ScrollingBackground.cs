@@ -18,11 +18,13 @@ public class ScrollingBackground : MonoBehaviour
 
     private float delayTime;
 
-    private static bool changeBackground;
+    public static bool changeBackground;
+    public static bool isChanged;
 
     private void Awake()
     {
         changeBackground = false;
+        isChanged = false;
     }
     private void FixedUpdate()
     {
@@ -32,6 +34,7 @@ public class ScrollingBackground : MonoBehaviour
             {
                 items[i].position = startPosition + direction;
 
+                if (i == 2) isChanged = changeBackground;
                 tunnel[i].SetActive(!changeBackground);
                 station[i].SetActive(changeBackground);
             }
@@ -52,11 +55,5 @@ public class ScrollingBackground : MonoBehaviour
 
         if (delayTime <= 0) delayTime = 1;
         else delayTime -= Time.deltaTime * speed;
-    }
-
-    [ContextMenu("ChangeLevel")]
-    public void ChangeLevel()
-    {
-        changeBackground = !changeBackground;
     }
 }
