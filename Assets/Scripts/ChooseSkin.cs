@@ -20,10 +20,12 @@ public class ChooseSkin : MonoBehaviour
     {
         DrawSprite();
     }
+
     private void Update()
     {
         Animation();
     }
+
     public void ChangeSkin()
     {
         if (currentImage != 0 && availableSkins[currentImage - 1] <= GameManager.coin)
@@ -31,6 +33,7 @@ public class ChooseSkin : MonoBehaviour
         else if (currentImage == 0 || availableSkins[currentImage - 1] == 0)
             currentSkinId = currentImage;
     }
+
     private void BuySkin()
     {
         GameManager.coin -= availableSkins[currentImage - 1];
@@ -38,6 +41,7 @@ public class ChooseSkin : MonoBehaviour
 
         currentSkinId = currentImage;
     }
+
     public void SwipeLeft()
     {
         currentImage--;
@@ -45,6 +49,7 @@ public class ChooseSkin : MonoBehaviour
 
         DrawSprite();
     }
+
     public void SwipeRight()
     {
         currentImage++;
@@ -52,6 +57,7 @@ public class ChooseSkin : MonoBehaviour
 
         DrawSprite();
     }
+
     private void Animation()
     {
         if (currentImage != 0 && availableSkins[currentImage - 1] != 0)
@@ -71,6 +77,7 @@ public class ChooseSkin : MonoBehaviour
         else
             time -= Time.deltaTime;
     }
+
     private void DrawSprite()
     {
         switch (currentImage)

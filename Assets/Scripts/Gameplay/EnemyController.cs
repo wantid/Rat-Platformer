@@ -13,6 +13,7 @@ public class EnemyController : MonoBehaviour
         HealthChange();
         Death();
     }
+
     private void HealthChange()
     {
         if (hitCheck.hit == true)
@@ -21,6 +22,7 @@ public class EnemyController : MonoBehaviour
             healthPoints--;
         }
     }
+
     private void Death()
     {
         if (healthPoints <= 0)

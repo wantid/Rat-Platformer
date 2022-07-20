@@ -11,6 +11,7 @@ public class MiniLevelsHandler : MonoBehaviour
     {
         counter = 28;
     }
+
     private void Update()
     {
         if (time <= 0)
@@ -22,22 +23,25 @@ public class MiniLevelsHandler : MonoBehaviour
         }
         time -= Time.deltaTime;
     }
+
     [ContextMenu("ChangeLevel")]
     public void ChangeLevel()
     {
         ScrollingBackground.changeBackground = !ScrollingBackground.changeBackground;
     }
+
     [ContextMenu("New Level")]
     public void NewLevel()
     {
         if (IsReady())
-        { 
+        {
             if (counter % 32 < 32 && counter % 30 > 10)
                 Instantiate(LinkToObjects.instance.miniLevels[Random.Range(0, LinkToObjects.instance.miniLevels.Length)], parent);
             else
                 Instantiate(LinkToObjects.instance.miniLevels[Random.Range(0, LinkToObjects.instance.stationLevels.Length)], parent);
         }
     }
+
     private bool IsReady()
     {
         foreach (Transform child in parent)

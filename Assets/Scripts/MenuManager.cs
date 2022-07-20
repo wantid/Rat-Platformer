@@ -14,22 +14,27 @@ public class MenuManager : MonoBehaviour
     {
         instance = this;
     }
+
     public void Restart()
     {
         GameManager.Restart();
     }
+
     public void GoToMenu()
     {
         OpenMenu(MenuType.main);
     }
+
     public void ChangeSkin()
     {
         OpenMenu(MenuType.skin);
     }
+
     public void About()
     {
         OpenMenu(MenuType.about);
     }
+
     public void OpenMenu(MenuType menu)
     {
         switch (menu)
@@ -57,6 +62,7 @@ public class MenuManager : MonoBehaviour
         }
     }
 }
+
 public enum MenuType
 {
     skin,

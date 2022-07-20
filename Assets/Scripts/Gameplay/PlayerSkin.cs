@@ -12,6 +12,7 @@ public class PlayerSkin : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
+
     private void Start()
     {
         switch (ChooseSkin.currentSkinId)
@@ -39,6 +40,7 @@ public class PlayerSkin : MonoBehaviour
                 break;
         }
     }
+
     void Update()
     {
         spriteRenderer.sprite = currentSkin[currentSprite];

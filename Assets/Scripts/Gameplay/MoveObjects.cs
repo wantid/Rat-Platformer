@@ -29,6 +29,7 @@ public class MoveObjects : MonoBehaviour
 
         if (isAnimated) LoopAnimation();
     }
+
     private void MoveObject()
     {
         if (transform.position.x < -350)
@@ -41,6 +42,7 @@ public class MoveObjects : MonoBehaviour
         if (delayTime <= 0) delayTime = 1;
         else delayTime -= Time.deltaTime * speed;
     }
+
     private void LoopAnimation()
     {
         if (curTime <= 0)

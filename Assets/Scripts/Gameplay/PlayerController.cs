@@ -8,16 +8,23 @@ public class PlayerController : MonoBehaviour
 
     private new Rigidbody2D rigidbody2D;
     private Animator animator;
+
+    private int currentLayerMask;
+
     void Awake()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        currentLayerMask = 65;
     }
+
     void Update()
     {
         if (Input.GetButtonDown("Vertical") || Input.GetButtonDown("Fire1")) Jump();
         animator.SetBool("isGrounded", isGrounded());
+        Physics2D.SetLayerCollisionMask(3, currentLayerMask);
     }
+
     private bool isGrounded()
     {
         if (rigidbody2D.velocity.y > -.5f && rigidbody2D.velocity.y < .5f)
@@ -25,16 +32,26 @@ public class PlayerController : MonoBehaviour
             RaycastHit2D hit;
 
             bool CompareGround() {
-                if (hit.collider.CompareTag("Ground")) return true;
-                else return false;
+                switch (hit.collider.tag)
+                {
+                    case "Ground":
+                        currentLayerMask = 65;
+                        return true;
+                    case "Station":
+                        currentLayerMask = 1;
+                        return true;
+                    default:
+                        return false;
+                }
             }
 
             Vector2 pos = new Vector2(transform.position.x, transform.position.y - 8f);
-            if (hit = Physics2D.Linecast(pos, pos + Vector2.down * 16f, (1 << 0)))
+            if (hit = Physics2D.Linecast(pos, pos + Vector2.down * 16f, currentLayerMask))
                 return CompareGround();
         }
         return false;
     }
+
     private void Jump()
     {
         if (isGrounded() || doubleJump && !isGrounded())
@@ -44,6 +61,7 @@ public class PlayerController : MonoBehaviour
             rigidbody2D.AddForce(Vector2.up * jumpForce * 10000, ForceMode2D.Force);
         }
     }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         switch (collision.gameObject.tag)

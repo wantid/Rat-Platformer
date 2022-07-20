@@ -26,6 +26,7 @@ public class ScrollingBackground : MonoBehaviour
         changeBackground = false;
         isChanged = false;
     }
+
     private void FixedUpdate()
     {
         for (int i = 0; i < items.Length; i++)

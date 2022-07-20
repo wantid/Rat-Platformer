@@ -19,6 +19,7 @@ public class LinkToObjects : MonoBehaviour
     public Transform Level;
 
     [HideInInspector] public static LinkToObjects instance;
+
     void Awake()
     {
         instance = this;

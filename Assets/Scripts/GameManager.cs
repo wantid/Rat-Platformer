@@ -12,16 +12,19 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         coin = PlayerPrefs.GetInt("coin");
     }
+
     public static void SaveAll()
     {
         PlayerPrefs.SetInt("coin", coin);
         PlayerPrefs.Save();
     }
+
     public static void GameOver()
     {
         SaveAll();
         MenuManager.instance.OpenMenu(MenuType.main);
     }
+
     public static void Restart()
     {
         SaveAll();
